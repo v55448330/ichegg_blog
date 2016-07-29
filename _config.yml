@@ -5,7 +5,7 @@
 # Site
 title: 一个爱扯蛋的博客
 subtitle: www.ichegg.org
-description: Love your mother who who who
+description: love your mother who who who
 author: 张小宝 
 language: zh-Hans
 timezone: Asia/Shanghai
@@ -66,10 +66,18 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 duoshuo_shortname: ichegg
-jiathis: true
+duoshuo_share: true
 search:
   path: search.xml
   field: post
+
+index_generator:
+  per_page: 5
+
+archive_generator:
+  per_page: 20
+  yearly: true
+  monthly: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
