@@ -6,7 +6,7 @@
 title: 一个爱扯蛋的博客
 subtitle: www.ichegg.org
 description: love your mother who who who
-author: 张小宝 
+author: 张小宝
 language: zh-Hans
 timezone: Asia/Shanghai
 avatar: /images/avatar.jpg
@@ -35,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
