@@ -1,5 +1,5 @@
 ---
-title: lazy 负载均衡器 0.2beta 发布
+title: Lazy 负载均衡器 v0.2beta 发布
 date: 2016-08-06 01:04:34
 tags:
 categories: LazyBalancer
