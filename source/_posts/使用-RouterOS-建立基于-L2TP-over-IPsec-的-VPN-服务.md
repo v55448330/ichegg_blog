@@ -18,7 +18,7 @@ L2TP ，全称 `Layer 2 Tunneling Protocol` ，从字面上看，这玩意工作
 > 因为会和 IPsec 共同使用，所以此处默认配置文件不需要选择加密
 
 ```
-/interface l2tp-server server
+/interface l2tp-server server \
 set enabled=yes default-profile=default
 ```
 
@@ -26,31 +26,34 @@ set enabled=yes default-profile=default
 > `secret` 参数是您的预共享秘钥，`enc-algorithm` 参数请选择您设备支持的加密方式，不知道就别改，可选参数为 `3des,aes-128,aes-192,aes-256`
 
 ```
-/ip ipsec peer
-add address=0.0.0.0/0 local-address=0.0.0.0 passive=yes port=500 \
-auth-method=pre-shared-key secret="123" generate-policy=port-strict \
-exchange-mode=main-l2tp send-initial-contact=yes nat-traversal=yes \
-hash-algorithm=sha1 enc-algorithm=3des \
-dh-group=modp1024 lifetime=1d dpd-interval=2m dpd-maximum-failures=5
+/ip ipsec peer \
+add address=0.0.0.0/0 auth-method=pre-shared-key dh-group=modp1024 \
+disabled=no dpd-interval=2 dpd-maximum-failures=5 enc-algorithm=3des \
+exchange-mode=main-l2tp generate-policy=port-override hash-algorithm=sha1 \
+lifetime=1d nat-traversal=yes port=500 secret=123 send-initial-contact=yes
+
+/ip ipsec proposal \
+set default enc-algorithms=3des auth-algorithms=sha1 disabled=no \
+lifetime=30m pfs-group=modp1024
 ```
 
 ### 创建地址池和账号
 
 ```
-/ip pool add name=vpn-pool range=192.168.99.2-192.168.99.100
+/ip pool add \
+name=vpn-pool range=192.168.99.2-192.168.99.100
 
-/ppp profile
+/ppp profile \
 set default local-address=192.168.99.1 remote-address=vpn-pool
 
-/ppp secret
+/ppp secret \
 add name=xiaobao password=12354
-add name=crazy password=12354
 ```
 
 ### 防火墙规则
 
 ```
-/ip firewall filter
+/ip firewall filter \
 add chain=input protocol=udp port=1701,500,4500
 add chain=input protocol=ipsec-esp
 ```

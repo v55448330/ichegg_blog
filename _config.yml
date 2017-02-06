@@ -5,15 +5,15 @@
 # Site
 title: 一个爱扯蛋的博客
 subtitle: www.ichegg.org
-description: love your mother who who who
+description: <center>既然来到这个世上<br/>也没打算活着回去</center>
 author: 张小宝
 language: zh-Hans
 timezone: Asia/Shanghai
-avatar: /images/avatar.jpg
+avatar: /uploads/avator.jpg
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.ichegg.org
+url: https://www.ichegg.org
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -84,5 +84,6 @@ archive_generator:
 deploy:
   type: git
   #repo: https://github.com/v55448330/v55448330.github.io.git
+  # repo: https://git.oschina.net/v55448330/ichegg.git
   repo: https://git.coding.net/v55448330/v55448330.git
-  branch: master
+  branch: coding-pages
